@@ -1,0 +1,266 @@
+/* 首页样式 */
+.home-container {
+    padding: 10px;
+}
+
+/* 通用section样式 */
+section {
+    background: #fff;
+    border-radius: 4px;
+    padding: 20px;
+    margin-bottom: 12px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.section-header {
+    margin-bottom: 12px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 8px;
+}
+
+.section-header h2 {
+    color: var(--text-color);
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* 系统状态网格 */
+.status-grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.status-item {
+    width: 200px;
+    margin-right: 50px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.status-label {
+    color: #666;
+    font-size: 13px;
+    width: 80px;
+    margin-right: 5px;
+    text-align: right;
+}
+
+.status-value {
+    color: #142293;
+    font-size: 13px;
+    text-align: left;
+}
+
+/* 设备统计卡片 */
+.device-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+}
+
+.stat-card {
+    background: #fafafa;
+    padding: 15px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.stat-card h3 {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.stat-value {
+    font-size: 16px;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.stat-numbers {
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.online {
+    color: #52c41a;
+    font-weight: 500;
+}
+
+.offline {
+    color: #ff4d4f;
+    font-weight: 500;
+}
+
+.separator {
+    margin: 0 8px;
+    color: #999;
+}
+
+/* 配置表单区域 */
+.config-content {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 100px;
+    align-items: center;
+    max-width: 800px;
+}
+
+.sync-btn {
+    padding: 8px 16px;
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+    width: 160px;
+}
+
+.config-form {
+    width: 100%;
+    max-width: 550px;
+}
+
+.form-group {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.form-group label {
+    width: 120px;
+    text-align: right;
+    color: #666;
+    margin-right: 6px;
+}
+
+.form-group input {
+    flex: 1;
+    width: 300px;
+    flex: none;
+    padding: 6px;
+    border: 1px solid #f6f6f6;
+    border-radius: 4px;
+    color: #666;
+}
+.form-group input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(24,144,255,0.2);
+}
+
+.form-actions {
+    margin-top: 20px;
+    padding-left: 126px;
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+button[type="submit"] {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+button[type="button"] {
+    background: #fff;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+/* 响应式调整 */
+@media screen and (max-width: 1024px) {
+    .config-content {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin: 0 auto;
+    }
+    
+    .sync-btn {
+        order: -1;
+        width: 160px;
+        margin: 0 auto;
+    }
+
+    .config-form {
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .status-item {
+        width: calc(50% - 25px);
+        margin-right: 25px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .form-group {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .form-group label {
+        width: auto;
+        text-align: left;
+        margin-bottom: 4px;
+    }
+    
+    .form-group input {
+        width: 100%;
+    }
+    
+    .form-actions {
+        padding-left: 0;
+    }
+
+    .status-item {
+        width: 100%;
+        margin-right: 0;
+    }
+}
+
+/* 消息提示框 */
+.message-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.75);
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 4px;
+    z-index: 1000;
+    display: none;
+    animation: fadeInOut 2s ease-in-out;
+}
+
+.message-box.success {
+    background: rgba(82, 196, 26, 0.9);
+}
+
+.message-box.error {
+    background: rgba(255, 77, 79, 0.9);
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; }
+} 

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>系统首页 - 智经理前置机采集系统V2.0</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+    <div class="home-container">
+        <!-- 消息提示框 -->
+        <div id="messageBox" class="message-box">
+            <span class="message-content"></span>
+        </div>
+        <!-- 系统状态 -->
+        <section class="status-section">
+            <div class="section-header">
+                <h2>系统状态</h2>
+            </div>
+            <div class="status-grid">
+                <div class="status-item">
+                    <div class="status-label">启动时间：</div>
+                    <div class="status-value" id="startTime">--</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-label">运行时长：</div>
+                    <div class="status-value" id="runTime">--</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-label">内存占用：</div>
+                    <div class="status-value" id="memory">--</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-label">磁盘使用：</div>
+                    <div class="status-value" id="diskUsage">--</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-label">心跳上报：</div>
+                    <div class="status-value" id="lastBeatTime">--</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-label">当前IP：</div>
+                    <div class="status-value" id="ip">--</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-label">HTTP端口：</div>
+                    <div class="status-value" id="httpPort">--</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-label">TCP端口：</div>
+                    <div class="status-value" id="tcpPort">--</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 设备总况 -->
+        <section class="device-section">
+            <div class="section-header">
+                <h2>设备总况</h2>
+            </div>
+            <div class="device-stats">
+                <div class="stat-card">
+                    <h3>集中器(在线/离线)</h3>
+                    <div class="stat-numbers">
+                        <span class="online" id="centerOnline">--</span>
+                        <span class="separator">/</span>
+                        <span class="offline" id="centerOffline">--</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <h3>电表(在线/离线)</h3>
+                    <div class="stat-numbers">
+                        <span class="online" id="ammeterOnline">--</span>
+                        <span class="separator">/</span>
+                        <span class="offline" id="ammeterOffline">--</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <h3>电表最后采集时间</h3>
+                    <div class="stat-value online" id="lastReadTime">--</div>
+                </div>
+                <div class="stat-card">
+                    <h3>采集结果(成功/失败)</h3>
+                    <div class="stat-value">
+                        <span class="online" id="readSuccess">--</span>/<span class="offline" id="readFailed">--</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 系统配置 -->
+        <section class="config-section">
+            <div class="section-header">
+                <h2>系统配置</h2>
+            </div>
+            <div class="config-content">
+                <form id="configForm" class="config-form">
+                    <div class="form-group">
+                        <label>平台IP/域名：</label>
+                        <input type="text" id="remotAddr" name="remotAddr">
+                    </div>
+                    <div class="form-group">
+                        <label>平台远程端口：</label>
+                        <input type="number" id="remotPort" name="remotPort">
+                    </div>
+                    <div class="form-group">
+                        <label>平台密钥：</label>
+                        <input type="text" id="remotSecret" name="remotSecret">
+                    </div>
+                    <div class="form-group">
+                        <label>对公网IP：</label>
+                        <input type="text" id="configIp" name="ip">
+                    </div>
+                    <div class="form-group">
+                        <label>当前机器密钥：</label>
+                        <input type="text" id="secret" name="secret">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit">保存配置</button>
+                    </div>
+                </form>
+                <button type="button" id="syncBtn" class="sync-btn">重新拉取主站配置</button>
+            </div>
+        </section>
+    </div>
+
+    <script src="js/utils.js"></script>
+    <script src="js/home.js"></script>
+</body>
+</html> 

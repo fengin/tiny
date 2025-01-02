@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>电表管理 - 智经理前置机采集系统V2.0</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/list-common.css">
+    <link rel="stylesheet" href="css/ammeter.css">
+</head>
+<body>
+    <div class="ammeter-container">
+        <div class="list-container">
+            <!-- 搜索区域 -->
+            <div class="search-section">
+                <div class="search-form">
+                    <div class="form-group">
+                        <input type="text" id="centerAddr" placeholder="集中器地址">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="ammeterNo" placeholder="电表地址">
+                    </div>
+                    <button type="button" id="searchBtn" class="search-btn">搜索</button>
+                </div>
+                <!-- 操作区域 -->
+                <div class="action-section">
+                    <button type="button" id="batchReadBtn" class="action-btn" disabled>批量采集</button>
+                    <span class="selection-info">已选择: <span id="selectedCount">0</span></span>
+                </div>
+            </div>
+
+            <!-- 列表区域 -->
+            <div class="list-content">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th class="td_left">
+                                <input type="checkbox" id="selectAll">
+                            </th>
+                            <th>表地址</th>
+                            <th>表型号</th>
+                            <th>在线状态</th>
+                            <th>拉合闸状态</th>
+                            <th>抄表时间</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ammeterList">
+                        <!-- 数据将通过JavaScript动态加载 -->
+                    </tbody>
+                </table>
+                <!-- 分页控件 -->
+                <div class="pagination">
+                    <button id="prevPage" class="page-btn">&lt;</button>
+                    <span id="pageInfo">第 1 页</span>
+                    <button id="nextPage" class="page-btn">&gt;</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 详情弹窗 -->
+        <div id="detailModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>电表详情</h3>
+                    <span class="close">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div class="detail-grid">
+                        <div class="detail-item">
+                            <label>表地址：</label>
+                            <span id="detail-ammeterNo">--</span>
+                        </div>
+                        <div class="detail-item">
+                            <label>表类型：</label>
+                            <span id="detail-cat">--</span>
+                        </div>
+                        <div class="detail-item">
+                            <label>表型号：</label>
+                            <span id="detail-type">--</span>
+                        </div>
+                        <div class="detail-item">
+                            <label>表密码：</label>
+                            <span id="detail-psw">--</span>
+                        </div>
+                        <div class="detail-item">
+                            <label>通讯端口：</label>
+                            <span id="detail-comPort">--</span>
+                        </div>
+                        <div class="detail-item">
+                            <label>通讯速率：</label>
+                            <span id="detail-baudRate">--</span>
+                        </div>
+                        <div class="detail-item">
+                            <label>通讯协议：</label>
+                            <span id="detail-protocol">--</span>
+                        </div>
+                        <div class="detail-item">
+                            <label>在线状态：</label>
+                            <span id="detail-status">--</span>
+                        </div>
+                        <div class="detail-item">
+                            <label>拉合闸状态：</label>
+                            <span id="detail-valveStatus">--</span>
+                        </div>
+                        <div class="detail-item">
+                            <label>抄表时间：</label>
+                            <span id="detail-readTime">--</span>
+                        </div>
+                    </div>
+                    <div class="reading-data">
+                        <h4>最后抄表度数</h4>
+                        <div class="reading-grid">
+                            <div class="reading-item">
+                                <label>峰：</label>
+                                <span id="detail-peek">--</span>
+                            </div>
+                            <div class="reading-item">
+                                <label>尖：</label>
+                                <span id="detail-sharp">--</span>
+                            </div>
+                            <div class="reading-item">
+                                <label>平：</label>
+                                <span id="detail-flat">--</span>
+                            </div>
+                            <div class="reading-item">
+                                <label>谷：</label>
+                                <span id="detail-low">--</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/utils.js"></script>
+    <script src="js/ammeter.js"></script>
+</body>
+</html> 

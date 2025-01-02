@@ -1,0 +1,212 @@
+/* 新建一个通用的列表页面样式文件 */
+.list-container {
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+/* .list-content{
+    padding-left: 20px;
+    padding-right: 20px;
+} */
+ .td_left{
+    padding-left: 30px !important;
+ }
+.search-section {
+    padding: 12px 12px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.search-form {
+    display: flex;
+    gap: 12px;
+    max-width: 800px;
+    margin: 0;
+}
+
+.search-form .form-group {
+    flex: 1;
+    min-width: 0;
+    max-width: 300px;
+}
+
+.search-form input {
+    width: 100%;
+    padding: 4px 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.search-btn {
+    padding: 8px 20px;
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.search-btn:hover {
+    background: var(--secondary-color);
+}
+
+/* 表格样式优化 */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 12px;
+}
+
+.data-table th,
+.data-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 13px;
+}
+
+.data-table th {
+    background: #fafafa;
+    font-weight: 500;
+    color: #666;
+}
+
+.data-table tr {
+    background: #fff;
+}
+
+.data-table tr:hover {
+    background: #fafafa;
+}
+
+/* 状态标签样式 */
+.status {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 12px;
+}
+
+.status-online {
+    background: #f6ffed;
+    color: #52c41a;
+    border: 1px solid #b7eb8f;
+}
+
+.status-offline {
+    background: #fff2f0;
+    color: #ff4d4f;
+    border: 1px solid #ffccc7;
+}
+
+/* 操作按钮样式 */
+.detail-btn {
+    color: var(--primary-color);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px 8px;
+    transition: all 0.3s;
+}
+
+.detail-btn:hover {
+    color: var(--secondary-color);
+}
+
+/* 分页样式 */
+.pagination {
+    padding: 8px 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    background: #fff;
+}
+
+.page-btn {
+    padding: 4px 8px;
+    font-size: 12px;
+    border: 1px solid var(--border-color);
+    background: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.page-btn:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.page-btn:disabled {
+    border-color: #d9d9d9;
+    color: #d9d9d9;
+    cursor: not-allowed;
+}
+
+#pageInfo {
+    color: #666;
+}
+
+/* 操作区域 */
+.action-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.action-btn {
+    padding: 4px 12px;
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.action-btn:disabled {
+    background: #d9d9d9;
+    cursor: not-allowed;
+}
+
+.selection-info {
+    color: #666;
+    font-size: 13px;
+}
+
+/* 响应式调整 */
+@media screen and (max-width: 1200px) {
+    .search-form {
+        max-width: 700px;
+    }
+    
+    .search-form .form-group {
+        max-width: 280px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .search-form {
+        max-width: 600px;
+    }
+    
+    .search-form .form-group {
+        max-width: 250px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .search-form {
+        max-width: 100%;
+        flex-direction: column;
+    }
+
+    .search-form .form-group {
+        width: 100%;
+        max-width: none;
+    }
+
+    .search-btn {
+        width: 100%;
+    }
+} 

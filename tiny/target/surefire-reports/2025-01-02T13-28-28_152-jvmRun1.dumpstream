@@ -1,0 +1,293 @@
+# Created at 2025-01-02T13:28:35.569
+TestSet has not finished before stream error has appeared >> initializing exit by non-null configuration: null
+java.io.EOFException
+	at java.base/java.io.DataInputStream.readInt(DataInputStream.java:398)
+	at org.apache.maven.surefire.booter.MasterProcessCommand.decode(MasterProcessCommand.java:115)
+	at org.apache.maven.surefire.booter.CommandReader$CommandRunnable.run(CommandReader.java:391)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+
+
+# Created at 2025-01-02T13:28:40.817
+Unexpected IOException: 7,1,cn.fengin.tiny.test.http.HttpServerTest,testGetRequest,null,Connection refused: connect,null,Connection refused: connect,HttpServerTest.testGetRequest:166->sendRequest:143 \00BB Connect Connection refuse...,java.net.ConnectException: Connection refused: connect\000A\0009at cn.fengin.tiny.test.http.HttpServerTest.sendRequest(HttpServerTest.java:143)\000A\0009at cn.fengin.tiny.test.http.HttpServerTest.testGetRequest(HttpServerTest.java:166)\000A
+
+
+# Created at 2025-01-02T13:28:40.819
+Unexpected IOException: 5,1,cn.fengin.tiny.test.http.HttpServerTest,testGetWithParams,null,null,null
+
+
+# Created at 2025-01-02T13:28:40.821
+Unexpected IOException: 7,1,cn.fengin.tiny.test.http.HttpServerTest,testGetWithParams,null,Connection refused: connect,null,Connection refused: connect,HttpServerTest.testGetWithParams:178->sendRequest:143 \00BB Connect Connection ref...,java.net.ConnectException: Connection refused: connect\000A\0009at cn.fengin.tiny.test.http.HttpServerTest.sendRequest(HttpServerTest.java:143)\000A\0009at cn.fengin.tiny.test.http.HttpServerTest.testGetWithParams(HttpServerTest.java:178)\000A
+
+
+# Created at 2025-01-02T13:28:40.822
+Unexpected IOException: 5,1,cn.fengin.tiny.test.http.HttpServerTest,testPostRequest,null,null,null
+
+
+# Created at 2025-01-02T13:28:40.824
+Unexpected IOException: 7,1,cn.fengin.tiny.test.http.HttpServerTest,testPostRequest,null,Connection refused: connect,null,Connection refused: connect,HttpServerTest.testPostRequest:190->sendRequest:137 \00BB Connect Connection refus...,java.net.ConnectException: Connection refused: connect\000A\0009at cn.fengin.tiny.test.http.HttpServerTest.sendRequest(HttpServerTest.java:137)\000A\0009at cn.fengin.tiny.test.http.HttpServerTest.testPostRequest(HttpServerTest.java:190)\000A
+
+
+# Created at 2025-01-02T13:28:40.826
+Unexpected IOException: 5,1,cn.fengin.tiny.test.http.HttpServerTest,test404NotFound,null,null,null
+
+
+# Created at 2025-01-02T13:28:40.827
+Unexpected IOException: 7,1,cn.fengin.tiny.test.http.HttpServerTest,test404NotFound,null,Connection refused: connect,null,Connection refused: connect,HttpServerTest.test404NotFound:203 \00BB Connect Connection refused: connect,java.net.ConnectException: Connection refused: connect\000A\0009at cn.fengin.tiny.test.http.HttpServerTest.test404NotFound(HttpServerTest.java:203)\000A
+
+
+# Created at 2025-01-02T13:28:40.830
+Unexpected IOException with stream: 13:28:40.830 [main] INFO cn.fengin.tiny.http.HttpServer - HTTP server stopped
+
+
+# Created at 2025-01-02T13:28:40.831
+Unexpected IOException: 2,1,org.apache.maven.surefire.junitplatform.JUnitPlatformProvider,cn.fengin.tiny.test.http.HttpServerTest,null,null,null
+
+
+# Created at 2025-01-02T13:28:40.833
+Unexpected IOException: 1,1,org.apache.maven.surefire.junitplatform.JUnitPlatformProvider,cn.fengin.tiny.test.tcp.TcpServerTest,null,null,null
+
+
+# Created at 2025-01-02T13:28:40.835
+Unexpected IOException with stream: 13:28:40.835 [ForkJoinPool.commonPool-worker-1] INFO cn.fengin.tiny.tcp.TcpServer - Starting TCP server...
+
+
+# Created at 2025-01-02T13:28:40.841
+Unexpected IOException with stream: 13:28:40.841 [ForkJoinPool.commonPool-worker-1] INFO cn.fengin.tiny.tcp.TcpServer - TCP server test started on port 8082, cost time 10886 ms
+
+
+# Created at 2025-01-02T13:28:42.846
+Unexpected IOException: 5,1,cn.fengin.tiny.test.tcp.TcpServerTest,testConnectionAndMessage,null,null,null
+
+
+# Created at 2025-01-02T13:28:42.881
+Unexpected IOException with stream: 13:28:42.880 [nioEventLoopGroup-5-1] INFO cn.fengin.tiny.tcp.handler.TcpServerHandler - New channel active - Remote: /127.0.0.1:50148, Local: /127.0.0.1:8082
+
+
+# Created at 2025-01-02T13:28:42.887
+Unexpected IOException with stream: 13:28:42.886 [nioEventLoopGroup-5-1] DEBUG io.netty.util.Recycler - -Dio.netty.recycler.maxCapacityPerThread: 4096
+
+
+# Created at 2025-01-02T13:28:42.888
+Unexpected IOException with stream: 13:28:42.887 [nioEventLoopGroup-5-1] DEBUG io.netty.util.Recycler - -Dio.netty.recycler.ratio: 8
+
+
+# Created at 2025-01-02T13:28:42.889
+Unexpected IOException with stream: 13:28:42.888 [nioEventLoopGroup-5-1] DEBUG io.netty.util.Recycler - -Dio.netty.recycler.chunkSize: 32
+
+
+# Created at 2025-01-02T13:28:42.896
+Unexpected IOException with stream: 13:28:42.889 [nioEventLoopGroup-5-1] DEBUG io.netty.util.Recycler - -Dio.netty.recycler.blocking: false
+
+
+# Created at 2025-01-02T13:28:42.897
+Unexpected IOException with stream: 13:28:42.896 [nioEventLoopGroup-5-1] DEBUG io.netty.util.Recycler - -Dio.netty.recycler.batchFastThreadLocalOnly: true
+
+
+# Created at 2025-01-02T13:28:42.906
+Unexpected IOException with stream: 13:28:42.905 [nioEventLoopGroup-5-1] DEBUG io.netty.buffer.AbstractByteBuf - -Dio.netty.buffer.checkAccessible: true
+
+
+# Created at 2025-01-02T13:28:42.907
+Unexpected IOException with stream: 13:28:42.906 [nioEventLoopGroup-5-1] DEBUG io.netty.buffer.AbstractByteBuf - -Dio.netty.buffer.checkBounds: true
+
+
+# Created at 2025-01-02T13:28:42.908
+Unexpected IOException with stream: 13:28:42.908 [nioEventLoopGroup-5-1] DEBUG io.netty.util.ResourceLeakDetectorFactory - Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@26e23f46
+
+
+# Created at 2025-01-02T13:28:42.943
+Unexpected IOException with stream: 13:28:42.942 [nioEventLoopGroup-5-1] INFO cn.fengin.tiny.tcp.ConnectionManager - Device test-device-1 connected
+
+
+# Created at 2025-01-02T13:28:42.944
+Unexpected IOException with stream: 13:28:42.943 [nioEventLoopGroup-5-1] INFO cn.fengin.tiny.tcp.handler.TcpServerHandler - Device registered - ID: test-device-1, Remote: /127.0.0.1:50148, MessageType: 1
+
+
+# Created at 2025-01-02T13:28:42.945
+Unexpected IOException with stream: 13:28:42.944 [nioEventLoopGroup-5-1] DEBUG cn.fengin.tiny.tcp.handler.TcpServerHandler - Message processed - DeviceId: test-device-1, MessageType: 1, ProcessingTime: 16ms
+
+
+# Created at 2025-01-02T13:28:42.950
+Unexpected IOException: 6,1,cn.fengin.tiny.test.tcp.TcpServerTest,testConnectionAndMessage,null,null,null
+
+
+# Created at 2025-01-02T13:28:42.953
+Unexpected IOException: 5,1,cn.fengin.tiny.test.tcp.TcpServerTest,testConnectionLifecycle,null,null,null
+
+
+# Created at 2025-01-02T13:28:42.956
+Unexpected IOException with stream: 13:28:42.956 [nioEventLoopGroup-5-2] INFO cn.fengin.tiny.tcp.handler.TcpServerHandler - New channel active - Remote: /127.0.0.1:50149, Local: /127.0.0.1:8082
+
+
+# Created at 2025-01-02T13:28:42.959
+Unexpected IOException with stream: 13:28:42.958 [nioEventLoopGroup-5-2] INFO cn.fengin.tiny.tcp.ConnectionManager - Device test-device-2 connected
+
+
+# Created at 2025-01-02T13:28:42.960
+Unexpected IOException with stream: 13:28:42.959 [nioEventLoopGroup-5-2] INFO cn.fengin.tiny.tcp.handler.TcpServerHandler - Device registered - ID: test-device-2, Remote: /127.0.0.1:50149, MessageType: 1
+
+
+# Created at 2025-01-02T13:28:42.962
+Unexpected IOException with stream: 13:28:42.961 [nioEventLoopGroup-5-2] DEBUG cn.fengin.tiny.tcp.handler.TcpServerHandler - Message processed - DeviceId: test-device-2, MessageType: 1, ProcessingTime: 3ms
+
+
+# Created at 2025-01-02T13:28:43.963
+Unexpected IOException with stream: 13:28:43.962 [nioEventLoopGroup-5-2] INFO cn.fengin.tiny.tcp.ConnectionManager - Device test-device-2 disconnected
+
+
+# Created at 2025-01-02T13:28:43.964
+Unexpected IOException with stream: 13:28:43.963 [nioEventLoopGroup-5-2] INFO cn.fengin.tiny.tcp.handler.TcpServerHandler - Device disconnected - ID: test-device-2, Remote: /127.0.0.1:50149,
+
+
+# Created at 2025-01-02T13:28:44.970
+Unexpected IOException: 6,1,cn.fengin.tiny.test.tcp.TcpServerTest,testConnectionLifecycle,null,null,null
+
+
+# Created at 2025-01-02T13:28:44.971
+Unexpected IOException: 5,1,cn.fengin.tiny.test.tcp.TcpServerTest,testMultipleClients,null,null,null
+
+
+# Created at 2025-01-02T13:28:44.973
+Unexpected IOException with stream: 13:28:44.973 [nioEventLoopGroup-5-1] INFO cn.fengin.tiny.tcp.handler.TcpServerHandler - New channel active - Remote: /127.0.0.1:50151, Local: /127.0.0.1:8082
+
+
+# Created at 2025-01-02T13:28:44.974
+Unexpected IOException with stream: 13:28:44.974 [nioEventLoopGroup-5-1] INFO cn.fengin.tiny.tcp.ConnectionManager - Device test-device-0 connected
+
+
+# Created at 2025-01-02T13:28:44.974
+Unexpected IOException with stream: 13:28:44.974 [nioEventLoopGroup-5-1] INFO cn.fengin.tiny.tcp.handler.TcpServerHandler - Device registered - ID: test-device-0, Remote: /127.0.0.1:50151, MessageType: 1
+
+
+# Created at 2025-01-02T13:28:44.975
+Unexpected IOException with stream: 13:28:44.974 [nioEventLoopGroup-5-1] DEBUG cn.fengin.tiny.tcp.handler.TcpServerHandler - Message processed - DeviceId: test-device-0, MessageType: 1, ProcessingTime: 0ms
+
+
+# Created at 2025-01-02T13:28:45.079
+Unexpected IOException with stream: 13:28:45.079 [nioEventLoopGroup-5-2] INFO cn.fengin.tiny.tcp.handler.TcpServerHandler - New channel active - Remote: /127.0.0.1:50152, Local: /127.0.0.1:8082
+
+
+# Created at 2025-01-02T13:28:45.080
+Unexpected IOException with stream: 13:28:45.079 [nioEventLoopGroup-5-2] WARN cn.fengin.tiny.tcp.ConnectionManager - Device test-device-1 already connected, closing old connection
+
+
+# Created at 2025-01-02T13:28:45.081
+Unexpected IOException with stream: 13:28:45.080 [nioEventLoopGroup-5-2] INFO cn.fengin.tiny.tcp.ConnectionManager - Device test-device-1 connected
+
+
+# Created at 2025-01-02T13:28:45.081
+Unexpected IOException with stream: 13:28:45.081 [nioEventLoopGroup-5-1] INFO cn.fengin.tiny.tcp.handler.TcpServerHandler - Unregistered channel disconnected - Remote: /127.0.0.1:50148
+
+
+# Created at 2025-01-02T13:28:45.082
+Unexpected IOException with stream: 13:28:45.081 [nioEventLoopGroup-5-2] INFO cn.fengin.tiny.tcp.handler.TcpServerHandler - Device registered - ID: test-device-1, Remote: /127.0.0.1:50152, MessageType: 1
+
+
+# Created at 2025-01-02T13:28:45.082
+Unexpected IOException with stream: 13:28:45.082 [nioEventLoopGroup-5-2] DEBUG cn.fengin.tiny.tcp.handler.TcpServerHandler - Message processed - DeviceId: test-device-1, MessageType: 1, ProcessingTime: 3ms
+
+
+# Created at 2025-01-02T13:28:45.187
+Unexpected IOException with stream: 13:28:45.187 [nioEventLoopGroup-5-1] INFO cn.fengin.tiny.tcp.handler.TcpServerHandler - New channel active - Remote: /127.0.0.1:50153, Local: /127.0.0.1:8082
+
+
+# Created at 2025-01-02T13:28:45.188
+Unexpected IOException with stream: 13:28:45.187 [nioEventLoopGroup-5-1] INFO cn.fengin.tiny.tcp.ConnectionManager - Device test-device-2 connected
+
+
+# Created at 2025-01-02T13:28:45.188
+Unexpected IOException with stream: 13:28:45.188 [nioEventLoopGroup-5-1] INFO cn.fengin.tiny.tcp.handler.TcpServerHandler - Device registered - ID: test-device-2, Remote: /127.0.0.1:50153, MessageType: 1
+
+
+# Created at 2025-01-02T13:28:45.188
+Unexpected IOException with stream: 13:28:45.188 [nioEventLoopGroup-5-1] DEBUG cn.fengin.tiny.tcp.handler.TcpServerHandler - Message processed - DeviceId: test-device-2, MessageType: 1, ProcessingTime: 1ms
+
+
+# Created at 2025-01-02T13:28:45.294
+Unexpected IOException with stream: 13:28:45.294 [nioEventLoopGroup-5-2] INFO cn.fengin.tiny.tcp.handler.TcpServerHandler - New channel active - Remote: /127.0.0.1:50154, Local: /127.0.0.1:8082
+
+
+# Created at 2025-01-02T13:28:45.295
+Unexpected IOException with stream: 13:28:45.295 [nioEventLoopGroup-5-2] INFO cn.fengin.tiny.tcp.ConnectionManager - Device test-device-3 connected
+
+
+# Created at 2025-01-02T13:28:45.295
+Unexpected IOException with stream: 13:28:45.295 [nioEventLoopGroup-5-2] INFO cn.fengin.tiny.tcp.handler.TcpServerHandler - Device registered - ID: test-device-3, Remote: /127.0.0.1:50154, MessageType: 1
+
+
+# Created at 2025-01-02T13:28:45.296
+Unexpected IOException with stream: 13:28:45.295 [nioEventLoopGroup-5-2] DEBUG cn.fengin.tiny.tcp.handler.TcpServerHandler - Message processed - DeviceId: test-device-3, MessageType: 1, ProcessingTime: 1ms
+
+
+# Created at 2025-01-02T13:28:45.401
+Unexpected IOException with stream: 13:28:45.401 [nioEventLoopGroup-5-1] INFO cn.fengin.tiny.tcp.handler.TcpServerHandler - New channel active - Remote: /127.0.0.1:50155, Local: /127.0.0.1:8082
+
+
+# Created at 2025-01-02T13:28:45.402
+Unexpected IOException with stream: 13:28:45.402 [nioEventLoopGroup-5-1] INFO cn.fengin.tiny.tcp.ConnectionManager - Device test-device-4 connected
+
+
+# Created at 2025-01-02T13:28:45.402
+Unexpected IOException with stream: 13:28:45.402 [nioEventLoopGroup-5-1] INFO cn.fengin.tiny.tcp.handler.TcpServerHandler - Device registered - ID: test-device-4, Remote: /127.0.0.1:50155, MessageType: 1
+
+
+# Created at 2025-01-02T13:28:45.403
+Unexpected IOException with stream: 13:28:45.403 [nioEventLoopGroup-5-1] DEBUG cn.fengin.tiny.tcp.handler.TcpServerHandler - Message processed - DeviceId: test-device-4, MessageType: 1, ProcessingTime: 1ms
+
+
+# Created at 2025-01-02T13:28:47.521
+Unexpected IOException: 6,1,cn.fengin.tiny.test.tcp.TcpServerTest,testMultipleClients,null,null,null
+
+
+# Created at 2025-01-02T13:28:47.522
+Unexpected IOException: 2,1,org.apache.maven.surefire.junitplatform.JUnitPlatformProvider,cn.fengin.tiny.test.tcp.TcpServerTest,null,null,null
+
+
+# Created at 2025-01-02T13:28:47.523
+Unexpected IOException with stream: 13:28:47.522 [nioEventLoopGroup-5-1] INFO cn.fengin.tiny.tcp.ConnectionManager - Device test-device-0 disconnected
+
+
+# Created at 2025-01-02T13:28:47.523
+Unexpected IOException with stream: 13:28:47.522 [nioEventLoopGroup-5-2] INFO cn.fengin.tiny.tcp.ConnectionManager - Device test-device-1 disconnected
+
+
+# Created at 2025-01-02T13:28:47.524
+Unexpected IOException with stream: 13:28:47.523 [nioEventLoopGroup-5-1] INFO cn.fengin.tiny.tcp.handler.TcpServerHandler - Device disconnected - ID: test-device-0, Remote: /127.0.0.1:50151,
+
+
+# Created at 2025-01-02T13:28:47.524
+Unexpected IOException with stream: 13:28:47.523 [nioEventLoopGroup-5-2] INFO cn.fengin.tiny.tcp.handler.TcpServerHandler - Device disconnected - ID: test-device-1, Remote: /127.0.0.1:50152,
+
+
+# Created at 2025-01-02T13:28:47.525
+Unexpected IOException with stream: 13:28:47.524 [nioEventLoopGroup-5-1] INFO cn.fengin.tiny.tcp.ConnectionManager - Device test-device-2 disconnected
+
+
+# Created at 2025-01-02T13:28:47.525
+Unexpected IOException with stream: 13:28:47.524 [nioEventLoopGroup-5-2] INFO cn.fengin.tiny.tcp.ConnectionManager - Device test-device-3 disconnected
+
+
+# Created at 2025-01-02T13:28:47.526
+Unexpected IOException with stream: 13:28:47.525 [nioEventLoopGroup-5-1] INFO cn.fengin.tiny.tcp.handler.TcpServerHandler - Device disconnected - ID: test-device-2, Remote: /127.0.0.1:50153,
+
+
+# Created at 2025-01-02T13:28:47.526
+Unexpected IOException with stream: 13:28:47.525 [nioEventLoopGroup-5-2] INFO cn.fengin.tiny.tcp.handler.TcpServerHandler - Device disconnected - ID: test-device-3, Remote: /127.0.0.1:50154,
+
+
+# Created at 2025-01-02T13:28:47.527
+Unexpected IOException with stream: 13:28:47.526 [nioEventLoopGroup-5-1] INFO cn.fengin.tiny.tcp.ConnectionManager - Device test-device-4 disconnected
+
+
+# Created at 2025-01-02T13:28:47.527
+Unexpected IOException with stream: 13:28:47.527 [nioEventLoopGroup-5-1] INFO cn.fengin.tiny.tcp.handler.TcpServerHandler - Device disconnected - ID: test-device-4, Remote: /127.0.0.1:50155,
+
+
+# Created at 2025-01-02T13:28:49.595
+Unexpected IOException with stream: 13:28:49.594 [nioEventLoopGroup-5-1] DEBUG io.netty.buffer.PoolThreadCache - Freed 1 thread-local buffer(s) from thread: nioEventLoopGroup-5-1
+
+
+# Created at 2025-01-02T13:28:49.596
+Unexpected IOException with stream: 13:28:49.594 [nioEventLoopGroup-5-2] DEBUG io.netty.buffer.PoolThreadCache - Freed 1 thread-local buffer(s) from thread: nioEventLoopGroup-5-2
+
+

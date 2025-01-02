@@ -1,0 +1,135 @@
+# 服务器配置
+server:
+  # HTTP服务器配置
+  http:
+    port: 8080                # HTTP服务端口，选择8080作为标准的Web服务端口，便于开发和部署
+    boss-threads: 1           # 接收连接的线程数，对于接收连接来说1个线程足够，因为它只负责接收连接并分发给worker线程
+    worker-threads: 4         # 处理请求的工作线程数，设置为4是因为大多数场景下每个CPU核心配置2个线程是最优的，这里假设是双核CPU
+    backlog: 128             # 等待队列大小，128是Linux系统默认的backlog值，适合大多数中小规模应用
+    keepalive: true          # 启用长连接，减少频繁创建连接的开销，提高性能
+  
+  # TCP服务器配置（用于设备连接）
+  tcp:
+    # 可以配置多个TCP服务（每个服务可以配置不同的协议
+    # 不同设备上行消息协议可能不同，要按协议都解析判断太耗性能，不如每个服务都按自己的协议解析）
+    # 支持多服务启动，但是和设备的连接管理是共享的
+    servers:
+      - name: default                # 服务名称
+        port: 8081                   # 服务端口
+        boss-threads: 1             # 接收连接的线程数
+        worker-threads: 4           # 处理请求的工作线程数
+        backlog: 1024              # 等待队列大小
+        device-idle-time: 60       # 设备心跳检测周期，60秒没有读取到数据则判定为空闲，建议比心跳周期大一点儿
+        device-idle-timeout: 1800  # 设备空闲超时时间，1800秒没有读取到数据则判定为断开(差不多3个心跳周期)
+
+      # 自定义协议服务
+      - name: define1              # 自定义协议服务
+        port: 8082                 # 自定义端口
+        boss-threads: 1
+        worker-threads: 4
+        backlog: 1024
+        device-idle-time: 60       # 设备心跳检测周期，60秒没有读取到数据则判定为空闲，建议比心跳周期大一点儿
+        device-idle-timeout: 1800  # 设备空闲超时时间，1800秒没有读取到数据则判定为断开(差不多3个心跳周期)
+
+
+# 数据库配置
+database:
+  sqlite:
+    path: ./data.db          # 数据库文件路径，放在当前目录便于管理和备份
+    url: jdbc:sqlite:data.db # 数据库连接URL，使用相对路径便于部署
+    maxPoolSize: 10          # 连接池最大连接数，考虑到SQLite是单文件数据库，10个并发连接足够处理正常负载
+    minPoolSize: 2           # 连接池最小连接数，保持2个空闲连接可以快速响应突发请求
+    maxLifetime: 1800000     # 连接最大生存时间（30分钟），防止连接泄露
+    connectionTimeout: 30000  # 连接超时时间（30秒），在网络正常的情况下足够建立连接
+
+# 静态资源配置
+static:
+  path: /static              # 静态资源根路径，标准的静态资源目录名称
+  cache-enabled: false        # 启用缓存可以显著提高静态资源访问性能
+  cache-max-age: 3600        # 缓存过期时间（1小时），平衡缓存效果和资源更新频率
+  max-cache-size: 100        # 最大缓存条目数，考虑到内存使用和缓存命中率的平衡
+
+  # 静态资源类型
+  mime-types:
+    # 文本文件
+    .html: text/html; charset=UTF-8
+    .htm: text/html; charset=UTF-8
+    .css: text/css; charset=UTF-8
+    .js: application/javascript; charset=UTF-8
+    .json: application/json; charset=UTF-8
+    .xml: application/xml; charset=UTF-8
+    .txt: text/plain; charset=UTF-8
+    .md: text/markdown; charset=UTF-8
+    
+    # 图片文件
+    .png: image/png
+    .jpg: image/jpeg
+    .jpeg: image/jpeg
+    .gif: image/gif
+    .ico: image/x-icon
+    .svg: image/svg+xml
+    .webp: image/webp
+    
+    # 字体文件
+    .ttf: font/ttf
+    .woff: font/woff
+    .woff2: font/woff2
+    .eot: application/vnd.ms-fontobject
+    
+    # 压缩文件
+    .zip: application/zip
+    .rar: application/x-rar-compressed
+    .7z: application/x-7z-compressed
+      
+# 安全配置
+security:
+  directory-browsing: false  # 禁止目录浏览，防止信息泄露
+  etag-enabled: true        # 启用ETag，配合浏览器缓存提高性能
+  allowed-extensions:        # 允许访问的文件扩展名，仅允许必要的文件类型
+    - .html
+    - .css
+    - .js
+    - .json
+    - .png
+    - .jpg
+    - .jpeg
+    - .gif
+    - .ico
+    - .svg
+    - .webp
+    - .ttf
+    - .woff
+    - .woff2
+
+  # CORS配置
+  cors:
+    enabled: false           # 默认禁用CORS，需要时再启用
+    allow-origin: "*"        # 允许所有源，实际使用时应该限制特定域名
+    allow-methods: "GET, POST, OPTIONS"  # 允许的HTTP方法，限制为必要的方法
+    allow-headers: "*"       # 允许所有请求头，实际使用时应该限制必要的头部
+    max-age: 3600           # 预检请求缓存时间（1小时），减少预检请求次数
+
+  # 资源限制
+  maxRequestsPerSecond: 100     # 每秒最大请求数，防止DoS攻击
+  maxConnectionsPerIp: 50       # 每IP最大并发连接数，防止资源耗尽
+  maxRequestBodySize: 10485760  # 最大请求体大小（10MB），防止内存溢出
+  maxMemoryUsage: 1073741824    # 最大内存使用（1GB），预留足够的系统资源
+
+# 线程池配置
+thread-pool:
+  core-size: 10             # 核心线程数，根据CPU核心数和预期并发量设置
+  max-size: 20             # 最大线程数，允许短时间的突发负载
+  queue-capacity: 1000      # 任务队列容量，缓冲突发请求
+  keep-alive-seconds: 60    # 空闲线程存活时间（60秒），平衡资源使用和响应速度
+
+# 认证配置
+auth:
+  # 用户认证配置
+  user:
+    username: admin         # 默认管理员用户名，建议在生产环境中修改
+    password: admin123      # 默认管理员密码，建议在生产环境中使用更强的密码
+    token-expire-hours: 24  # Token过期时间（24小时），平衡安全性和用户体验
+  
+  # 系统间调用认证配置
+  api:
+    key: your-system-api-key  # 系统间调用的API密钥，建议使用环境变量配置

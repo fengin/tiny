@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>集中器管理 - 智经理前置机采集系统V2.0</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/list-common.css">
+    <link rel="stylesheet" href="css/center.css">
+</head>
+<body>
+    <div class="center-container">
+        <div class="list-container">
+            <!-- 搜索区域 -->
+            <div class="search-section">
+                <div class="search-form">
+                    <div class="form-group">
+                        <input type="text" id="centerName" placeholder="集中器名称">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="centerAddr" placeholder="集中器地址">
+                    </div>
+                    <button type="button" id="searchBtn" class="search-btn">搜索</button>
+                </div>
+            </div>
+            <!-- 列表区域 -->
+            <div class="list-content">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th class="td_left">集中器名称</th>
+                            <th>状态</th>
+                            <th>类型</th>
+                            <th>地址</th>
+                            <th>电表数量</th>
+                            <th>在线/离线</th>
+                        </tr>
+                    </thead>
+                    <tbody id="centerList">
+                        <!-- 数据将通过JavaScript动态加载 -->
+                    </tbody>
+                </table>
+                <!-- 分页控件 -->
+                <div class="pagination">
+                    <button id="prevPage" class="page-btn">&lt;</button>
+                    <span id="pageInfo">第 1 页</span>
+                    <button id="nextPage" class="page-btn">&gt;</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/utils.js"></script>
+    <script src="js/center.js"></script>
+</body>
+</html> 
