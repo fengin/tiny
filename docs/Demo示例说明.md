@@ -60,7 +60,7 @@ demo/
 │   │   │       │   ├── service/                # 服务层
 │   │   │       │   └── RouterRegistry.java     # 路由注册
 │   │   │       └── tcp/                        # TCP相关
-│   │   │           ├── client/                 # 客户端模拟
+│   │   │           ├── test/                   # 模拟客户端上行/服务端下
 │   │   │           ├── message/                # 消息定义
 │   │   │           └── processor/              # 消息处理
 │   │   └── resources/

@@ -1,6 +1,7 @@
 package cn.fengin.tiny.http.interceptor;
 
 import cn.fengin.tiny.http.HttpRequest;
+import cn.fengin.tiny.http.HttpResponse;
 import io.netty.channel.ChannelHandlerContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,7 +36,7 @@ public class InterceptorChain {
     public boolean applyPreHandle(ChannelHandlerContext ctx, HttpRequest request) {
         for (Interceptor interceptor : interceptors) {
             try {
-                if (!interceptor.preHandle(ctx, request)) {
+                if (!interceptor.preHandle(request,new HttpResponse(ctx))) {
                     return false;
                 }
             } catch (Exception e) {
@@ -52,7 +53,7 @@ public class InterceptorChain {
     public void applyPostHandle(ChannelHandlerContext ctx, HttpRequest request) {
         for (int i = interceptors.size() - 1; i >= 0; i--) {
             try {
-                interceptors.get(i).postHandle(ctx, request);
+                interceptors.get(i).postHandle(request,new HttpResponse(ctx));
             } catch (Exception e) {
                 logger.error("Error in interceptor postHandle", e);
             }
@@ -65,7 +66,7 @@ public class InterceptorChain {
     public void triggerAfterCompletion(ChannelHandlerContext ctx, HttpRequest request, Exception ex) {
         for (int i = interceptors.size() - 1; i >= 0; i--) {
             try {
-                interceptors.get(i).afterCompletion(ctx, request, ex);
+                interceptors.get(i).afterCompletion(request,new HttpResponse(ctx), ex);
             } catch (Exception e) {
                 logger.error("Error in interceptor afterCompletion", e);
             }

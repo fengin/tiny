@@ -1,14 +1,18 @@
 # 背景
 
-::: tip
-
 这是一个80%以上由Cursor开发的项目，其中HttpServer部分和Demo工程基本全部由Cursor开发完成，TCP部分由于本人开始对设备通讯不是特别熟悉，提示词不太好写，所以开始让Cursor完成大部分，然后手工调整部分，文档也是由Cursor写了大部分。
 
 具体Cursor开发过程可以参考这个文章: https://aibook.ren/archives/use-cursor-dev-framework
 
 更多相关AI知识的学习，可以访问AI全书：[AI全书 ](https://aibook.ren)
 
-:::
+
+
+Gitee地址：[https://gitee.com/fengin/tiny.git](https://gitee.com/fengin/tiny.git)
+
+GitHub地址：[https://github.com/fengin/tiny.git](https://github.com/fengin/tiny.git)
+
+
 
 **项目目录说明**：
 
@@ -54,7 +58,7 @@ Tiny Framework 是一个基于 Netty 的轻量级 Web 框架，专为物联网�
 
 # 开源说明
 
-本开源项目允许拷贝、复制和免费使用，免费商用，但须保留作者来源。
+本开源项目允许拷贝、复制和免费商用，但须保留作者来源。
 
 作者：凌封
 

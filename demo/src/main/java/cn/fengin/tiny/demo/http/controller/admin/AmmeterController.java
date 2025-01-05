@@ -1,6 +1,7 @@
 package cn.fengin.tiny.demo.http.controller.admin;
 
 import cn.fengin.tiny.http.HttpRequest;
+import cn.fengin.tiny.http.HttpResponse;
 import cn.fengin.tiny.http.HttpResponseUtil;
 import io.netty.channel.ChannelHandlerContext;
 import cn.fengin.tiny.demo.http.model.ApiResponse;
@@ -14,7 +15,7 @@ public class AmmeterController {
     /**
      * 电表列表 /api/admin/ammeter/list
      */
-    public void list(ChannelHandlerContext ctx, HttpRequest request) {
+    public void list(HttpRequest request, HttpResponse response) {
         try {
             // 模拟分页数据
             List<Map<String, Object>> ammeters = new ArrayList<>();
@@ -28,23 +29,22 @@ public class AmmeterController {
                 ammeters.add(ammeter);
             }
 
-            Map<String, Object> response = new HashMap<>();
-            response.put("data", ammeters);
-            response.put("total", 150);
-
-            HttpResponseUtil.send(ctx, ApiResponse.success(response));
+            Map<String, Object> data = new HashMap<>();
+            data.put("data", ammeters);
+            data.put("total", 150);
+            response.write(ApiResponse.success(data));
         } catch (Exception e) {
-            HttpResponseUtil.send(ctx, ApiResponse.error(500, "获取电表列表失败"));
+            response.write(ApiResponse.error(500, "获取电表列表失败"));
         }
     }
 
     /**
      * 电表详情 /api/admin/ammeter/detail
      */
-    public void detail(ChannelHandlerContext ctx, HttpRequest request) {
+    public void detail(HttpRequest request, HttpResponse response) {
         try {
             String ammeterNo = request.getParameter("ammeterNo");
-            
+
             Map<String, Object> detail = new HashMap<>();
             detail.put("ammeterNo", ammeterNo);
             detail.put("cat", "单相费控智能表");
@@ -61,22 +61,22 @@ public class AmmeterController {
             detail.put("flat", "345.67");
             detail.put("low", "456.78");
 
-            HttpResponseUtil.send(ctx, ApiResponse.success(detail));
+            response.write(ApiResponse.success(detail));
         } catch (Exception e) {
-            HttpResponseUtil.send(ctx, ApiResponse.error(500, "获取电表详情失败"));
+            response.write(ApiResponse.error(500, "获取电表详情失败"));
         }
     }
 
     /**
      * 批量采集 /api/admin/ammeter/read
      */
-    public void read(ChannelHandlerContext ctx, HttpRequest request) {
+    public void read(HttpRequest request, HttpResponse response) {
         try {
             Map<String, Boolean> result = new HashMap<>();
             result.put("success", true);
-            HttpResponseUtil.send(ctx, ApiResponse.success(result));
+            response.write(ApiResponse.success(result));
         } catch (Exception e) {
-            HttpResponseUtil.send(ctx, ApiResponse.error(500, "批量采集请求失败"));
+            response.write(ApiResponse.error(500, "批量采集请求失败"));
         }
     }
 }

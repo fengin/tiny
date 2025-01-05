@@ -1,6 +1,7 @@
 package cn.fengin.tiny.demo.http.interceptor;
 
 
+import cn.fengin.tiny.http.HttpResponse;
 import cn.fengin.tiny.http.interceptor.Interceptor;
 import cn.fengin.tiny.http.HttpRequest;
 import cn.fengin.tiny.http.HttpResponseUtil;
@@ -15,7 +16,7 @@ import cn.fengin.tiny.context.ApplicationContext;
 public class ApiAuthInterceptor implements Interceptor {
     
     @Override
-    public boolean preHandle(ChannelHandlerContext ctx, HttpRequest request) {
+    public boolean preHandle(HttpRequest request,HttpResponse response) {
         // 只处理系统间调用的API
         if (!isOpenApi(request.getPath())) {
             return true;
@@ -24,7 +25,7 @@ public class ApiAuthInterceptor implements Interceptor {
         // 验证API密钥
         String apiKey = request.getHeader("X-API-Key");
         if (!isValidApiKey(apiKey)) {
-            HttpResponseUtil.sendUnauthorized(ctx);
+            response.writeUnauthorized();
             return false;
         }
         
@@ -32,7 +33,7 @@ public class ApiAuthInterceptor implements Interceptor {
     }
     
     @Override
-    public void postHandle(ChannelHandlerContext ctx, HttpRequest request) {
+    public void postHandle(HttpRequest request,HttpResponse response) {
         // 不需要后置处理
     }
     

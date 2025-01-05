@@ -1,6 +1,7 @@
 package cn.fengin.tiny.demo.http.controller.admin;
 
 import cn.fengin.tiny.http.HttpRequest;
+import cn.fengin.tiny.http.HttpResponse;
 import cn.fengin.tiny.http.HttpResponseUtil;
 import io.netty.channel.ChannelHandlerContext;
 import cn.fengin.tiny.demo.http.model.ApiResponse;
@@ -14,7 +15,7 @@ public class CenterController {
     /**
      * 集中器列表 /api/admin/center/list
      */
-    public void list(ChannelHandlerContext ctx, HttpRequest request) {
+    public void list(HttpRequest request, HttpResponse response) {
         try {
             // 模拟分页数据
             List<Map<String, Object>> centers = new ArrayList<>();
@@ -34,13 +35,13 @@ public class CenterController {
                 centers.add(center);
             }
 
-            Map<String, Object> response = new HashMap<>();
-            response.put("data", centers);
-            response.put("total", 100);
+            Map<String, Object> data = new HashMap<>();
+            data.put("data", centers);
+            data.put("total", 100);
 
-            HttpResponseUtil.send(ctx, ApiResponse.success(response));
+            response.write(ApiResponse.success(data));
         } catch (Exception e) {
-            HttpResponseUtil.send(ctx, ApiResponse.error(500, "获取集中器列表失败"));
+            response.write(ApiResponse.error(500, "获取集中器列表失败"));
         }
     }
 }

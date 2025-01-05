@@ -75,28 +75,28 @@ public class Application {
 
 ```java
 // 注册 GET 请求处理器
-Router.get("/api/test", (ctx, request) -> {
-    HttpResponseUtil.send(ctx, "Hello World!");
+Router.get("/api/test", (request,response) -> {
+    response.write("Hello World!");
 });
 
 // 注册 POST 请求处理器
-Router.post("/api/data", (ctx, request) -> {
+Router.post("/api/data", (request,response) -> {
     String data = request.getParameter("data");
-    HttpResponseUtil.sendJson(ctx, "{\"status\":\"success\"}");
+    response.write("{\"status\":\"success\"}");
 });
 ```
 
 正常情况下，一般会仿照springboot编写controller类，实现具体的方法，本框架本着比较简单的原则，没有在这方面做丰富的注解功能和方法自定义封装，需要自行实现以下参数为作入参的方法
 
 ```java
-ChannelHandlerContext ctx, HttpRequest request
+ HttpRequest request,HttpResponse response
 ```
 
 以下是一个示例
 
 ```java
 public class UserController {
-    public void handleRequest(ChannelHandlerContext ctx, HttpRequest request) {
+    public void handleRequest(HttpRequest request,HttpResponse response) {
         // 获取请求参数
         String id = request.getParameter("id");
 
@@ -104,7 +104,7 @@ public class UserController {
         User user = userService.getUser(id);
 
         // 返回响应
-        HttpResponseUtil.sendJson(ctx, JsonUtil.toJson(user));
+        response.write(JsonUtil.toJson(user));
     }
 }
 ```

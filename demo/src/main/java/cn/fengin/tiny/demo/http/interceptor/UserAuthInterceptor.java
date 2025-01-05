@@ -1,5 +1,6 @@
 package cn.fengin.tiny.demo.http.interceptor;
 
+import cn.fengin.tiny.http.HttpResponse;
 import cn.fengin.tiny.http.interceptor.Interceptor;
 import cn.fengin.tiny.http.HttpRequest;
 import cn.fengin.tiny.http.HttpResponseUtil;
@@ -22,7 +23,7 @@ public class UserAuthInterceptor implements Interceptor {
     }
     
     @Override
-    public boolean preHandle(ChannelHandlerContext ctx, HttpRequest request) {
+    public boolean preHandle(HttpRequest request,HttpResponse response) {
         // 登录页面和登录接口不需要验证
         if (isIgnore(request.getPath())) {
             return true;
@@ -31,7 +32,7 @@ public class UserAuthInterceptor implements Interceptor {
         // 验证token
         String token = request.getHeader("Authorization");
         if (token == null) {
-            HttpResponseUtil.sendUnauthorized(ctx);
+            response.writeUnauthorized();
             return false;
         }
         
@@ -42,13 +43,13 @@ public class UserAuthInterceptor implements Interceptor {
             request.setAttribute("user", actualToken);
             return true;
         } catch (Exception e) {
-            HttpResponseUtil.sendUnauthorized(ctx);
+            response.writeUnauthorized();
             return false;
         }
     }
     
     @Override
-    public void postHandle(ChannelHandlerContext ctx, HttpRequest request) {
+    public void postHandle(HttpRequest request,HttpResponse response) {
         // 不需要后置处理
     }
     @Override

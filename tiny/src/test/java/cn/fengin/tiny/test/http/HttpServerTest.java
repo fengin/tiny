@@ -2,10 +2,7 @@ package cn.fengin.tiny.test.http;
 
 import cn.fengin.tiny.config.ServerConfig;
 import cn.fengin.tiny.context.ApplicationContext;
-import cn.fengin.tiny.http.HttpServer;
-import cn.fengin.tiny.http.Router;
-import cn.fengin.tiny.http.HttpRequest;
-import cn.fengin.tiny.http.HttpResponseUtil;
+import cn.fengin.tiny.http.*;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import io.netty.channel.ChannelHandlerContext;
 import org.junit.jupiter.api.*;
@@ -38,24 +35,24 @@ public class HttpServerTest {
         /**
          * 处理基本GET请求
          */
-        public void test(ChannelHandlerContext ctx, HttpRequest request) {
-            HttpResponseUtil.send(ctx, "Hello, World!");
+        public void test(HttpRequest request, HttpResponse response) {
+            response.write("Hello, World!");
         }
 
         /**
          * 处理带参数的GET请求
          */
-        public void echo(ChannelHandlerContext ctx, HttpRequest request) {
+        public void echo(HttpRequest request, HttpResponse response) {
             String message = request.getParameter("message");
-            HttpResponseUtil.send(ctx, message);
+            response.write(message);
         }
 
         /**
          * 处理POST请求和JSON数据
          */
-        public void handleData(ChannelHandlerContext ctx, HttpRequest request) {
+        public void handleData(HttpRequest request,HttpResponse response) {
             String message = request.getParameter("message");
-            HttpResponseUtil.send(ctx, message+" processed");
+            response.write(message+" processed");
         }
     }
 

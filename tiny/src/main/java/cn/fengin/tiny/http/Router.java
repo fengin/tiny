@@ -98,7 +98,7 @@ public class Router {
         
         if (handler != null) {
             // 执行路由处理器
-            handler.handle(ctx, request);
+            handler.handle(request,new HttpResponse(ctx));
         } else {
             // 未找到路由，返回404
             logger.warn("No route found for: {} {}", request.getMethod().name(), request.getUri());

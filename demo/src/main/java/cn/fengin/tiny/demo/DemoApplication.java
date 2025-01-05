@@ -29,23 +29,6 @@ public class DemoApplication {
             // 启动TCP服务器
             startTcpServer();
 
-            ConnectionManager manager = ConnectionManager.getInstance();
-            ConnectionManager.Connection conn = manager.getConnection("deviceId");
-            conn.writeAndFlush(new Message(){
-                @Override
-                public int getMessageType() {
-                    return 0;
-                }
-                @Override
-                public byte[] getPayload() {
-                    return new byte[0];
-                }
-                @Override
-                public String getDeviceId() {
-                    return "deviceId";
-                }
-            });
-
         } catch (Exception e) {
             logger.error("Failed to start front application", e);
             System.exit(1);

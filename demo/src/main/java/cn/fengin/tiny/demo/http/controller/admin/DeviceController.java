@@ -1,6 +1,7 @@
 package cn.fengin.tiny.demo.http.controller.admin;
 
 import cn.fengin.tiny.http.HttpRequest;
+import cn.fengin.tiny.http.HttpResponse;
 import cn.fengin.tiny.http.HttpResponseUtil;
 import io.netty.channel.ChannelHandlerContext;
 import cn.fengin.tiny.demo.http.model.ApiResponse;
@@ -14,7 +15,7 @@ public class DeviceController {
     /**
      * 设备总体信息 /api/admin/device/info
      */
-    public void getInfo(ChannelHandlerContext ctx, HttpRequest request) {
+    public void getInfo(HttpRequest request, HttpResponse response) {
         try {
             Map<String, Object> info = new HashMap<>();
             
@@ -35,22 +36,22 @@ public class DeviceController {
             info.put("ok", 145);
             info.put("failed", 25);
 
-            HttpResponseUtil.send(ctx, ApiResponse.success(info));
+            response.write(ApiResponse.success(info));
         } catch (Exception e) {
-            HttpResponseUtil.send(ctx, ApiResponse.error(500, "获取设备信息失败"));
+            response.write(ApiResponse.error(500, "获取设备信息失败"));
         }
     }
 
     /**
      * 拉取设备配置 /api/admin/device/config/pull
      */
-    public void pullConfig(ChannelHandlerContext ctx, HttpRequest request) {
+    public void pullConfig(HttpRequest request, HttpResponse response) {
         try {
             Map<String, Boolean> result = new HashMap<>();
             result.put("success", true);
-            HttpResponseUtil.send(ctx, ApiResponse.success(result));
+            response.write(ApiResponse.success(result));
         } catch (Exception e) {
-            HttpResponseUtil.send(ctx, ApiResponse.error(500, "拉取设备配置失败"));
+            response.write(ApiResponse.error(500, "拉取设备配置失败"));
         }
     }
 }

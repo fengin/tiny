@@ -26,9 +26,9 @@ import io.netty.channel.ChannelHandlerContext;
 public interface RouteHandler {
     /**
      * 处理HTTP请求
-     * 
-     * @param ctx ChannelHandlerContext Netty通道上下文，用于发送响应
+     *
      * @param request HTTP请求对象，包含请求的所有信息
+     * @param response HTTP响应对象，用于发送响应
      */
-    void handle(ChannelHandlerContext ctx, HttpRequest request);
+    void handle(HttpRequest request,HttpResponse response);
 } 

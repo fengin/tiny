@@ -5,7 +5,7 @@
 	<groupId>cn.fengin</groupId>
 	<modelVersion>4.0.0</modelVersion>
     <artifactId>tiny</artifactId>
-    <version>0.0.1-snapshot</version>
+    <version>0.0.2-snapshot</version>
 	<packaging>jar</packaging>
 
     <properties>

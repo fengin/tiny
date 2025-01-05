@@ -35,6 +35,7 @@ tiny/
 - `Router.java`: 路由管理
 - `HttpServerInitializer.java`: 通道初始化器
 - `HttpRequest.java`: 请求封装
+- `HttpResponse.java`: 响应封装
 - `HttpResponseUtil.java`: 响应工具类
 
 #### TCP 模块 (cn.fengin.tiny.tcp)

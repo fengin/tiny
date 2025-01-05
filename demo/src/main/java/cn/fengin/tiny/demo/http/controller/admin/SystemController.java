@@ -1,6 +1,7 @@
 package cn.fengin.tiny.demo.http.controller.admin;
 
 import cn.fengin.tiny.http.HttpRequest;
+import cn.fengin.tiny.http.HttpResponse;
 import cn.fengin.tiny.http.HttpResponseUtil;
 import io.netty.channel.ChannelHandlerContext;
 import cn.fengin.tiny.demo.http.model.ApiResponse;
@@ -14,7 +15,7 @@ public class SystemController {
     /**
      * 系统状态数据接口 /api/admin/system/info
      */
-    public void getInfo(ChannelHandlerContext ctx, HttpRequest request) {
+    public void getInfo(HttpRequest request, HttpResponse response) {
         try {
             Map<String, Object> info = new HashMap<>();
             info.put("startTime", System.currentTimeMillis() - 86400000); // 1天前启动
@@ -27,16 +28,16 @@ public class SystemController {
             info.put("httpPort", 8080);
             info.put("tcpPort", 8081);
 
-            HttpResponseUtil.send(ctx, ApiResponse.success(info));
+            response.write(ApiResponse.success(info));
         } catch (Exception e) {
-            HttpResponseUtil.send(ctx, ApiResponse.error(500, "获取系统信息失败"));
+            response.write(ApiResponse.error(500, "获取系统信息失败"));
         }
     }
 
     /**
      * 读取前置机配置 /api/admin/system/config
      */
-    public void getConfig(ChannelHandlerContext ctx, HttpRequest request) {
+    public void getConfig(HttpRequest request,HttpResponse response) {
         try {
             Map<String, Object> config = new HashMap<>();
             config.put("remotAddr", "app.benzhitech.com");
@@ -45,23 +46,23 @@ public class SystemController {
             config.put("ip", "243.22.19.83");
             config.put("secret", "1D9eOIDKEFF0011FFeDEDS11FD228FD");
 
-            HttpResponseUtil.send(ctx, ApiResponse.success(config));
+            response.write(ApiResponse.success(config));
         } catch (Exception e) {
-            HttpResponseUtil.send(ctx, ApiResponse.error(500, "获取配置信息失败"));
+            response.write(ApiResponse.error(500, "获取配置信息失败"));
         }
     }
 
     /**
      * 更新前置机配置 /api/admin/system/config/update
      */
-    public void updateConfig(ChannelHandlerContext ctx, HttpRequest request) {
+    public void updateConfig(HttpRequest request,HttpResponse response) {
         try {
             // 模拟保存配置
             Map<String, Boolean> result = new HashMap<>();
             result.put("success", true);
-            HttpResponseUtil.send(ctx, ApiResponse.success(result));
+            response.write(ApiResponse.success(result));
         } catch (Exception e) {
-            HttpResponseUtil.send(ctx, ApiResponse.error(500, "更新配置失败"));
+            response.write(ApiResponse.error(500, "更新配置失败"));
         }
     }
 
