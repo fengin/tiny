@@ -79,6 +79,7 @@ public class HttpServerTest {
     @BeforeAll
     static void setup() throws Exception {
         // 创建HTTP服务器配置
+        System.setProperty("app.config", "application-template.yaml");
         ApplicationContext context = ApplicationContext.getInstance();
         ServerConfig.HttpConfig config = context.getServerConfig().getHttp();
         config.setPort(TEST_PORT);

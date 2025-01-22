@@ -42,9 +42,9 @@ public class UserController {
     /**
      * 登出接口 /api/admin/logout
      */
-    public void logout(ChannelHandlerContext ctx, HttpRequest request) {
+    public void logout(HttpRequest request,HttpResponse response) {
         Map<String, Boolean> result = new HashMap<>();
         result.put("success", true);
-        HttpResponseUtil.send(ctx, ApiResponse.success(result));
+        response.write(ApiResponse.success(result));
     }
 }

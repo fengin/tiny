@@ -26,7 +26,7 @@ public class App {
             startHttpServer();
 
             //启动TCP服务器
-            startTcpServer();
+            //startTcpServer();
 
             logger.info("Front application started successfully, cost time:{}ms", System.currentTimeMillis() - start);
         } catch (Exception e) {

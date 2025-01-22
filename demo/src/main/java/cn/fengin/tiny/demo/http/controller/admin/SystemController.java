@@ -69,9 +69,9 @@ public class SystemController {
     /**
      * 健康检查接口 /api/admin/system/status
      */
-    public void status(ChannelHandlerContext ctx, HttpRequest request) {
+    public void status(HttpRequest request,HttpResponse response) {
         Map<String, String> status = new HashMap<>();
         status.put("status", "ok");
-        HttpResponseUtil.send(ctx, ApiResponse.success(status));
+        response.write(ApiResponse.success(status));
     }
 }

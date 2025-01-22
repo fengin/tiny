@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
+import java.net.URI;
 import java.net.URL;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -41,7 +42,8 @@ public class StaticResourceHandler extends ChannelInboundHandlerAdapter {
      */
     public void handle(ChannelHandlerContext ctx, String uri) throws Exception{
         StaticResourceConfig config = context.getStaticResourceConfig();
-        String path = config.getPath() + uri;
+        URI parsedUri = new URI(uri);// 去除查询参数
+        String path = config.getPath() + parsedUri.getPath();
 
         byte[] content = null;
         // 如果启用缓存，先从缓存获取

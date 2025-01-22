@@ -18,7 +18,7 @@ tiny/
 │   │   │       ├── tcp/            # TCP服务相关
 │   │   │       └── util/           # 工具类
 │   │   └── resources/
-│   │       └── application.yaml    # 默认配置文件
+│   │       └── application-template.yaml    # 配置文件模板
 │   └── test/
 │       └── java/
 │           └── cn/fengin/tiny/test/

@@ -6,6 +6,8 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.http.*;
 import io.netty.util.CharsetUtil;
 
+import java.util.Map;
+
 /**
  * HTTP响应工具类
  * 提供常用的HTTP响应处理方法
@@ -18,7 +20,7 @@ public class HttpResponseUtil {
     /**
      * 发送JSON响应
      */
-    public static void send(ChannelHandlerContext ctx, String json) {
+    public static void send(ChannelHandlerContext ctx, String json, Map<String,String> headers) {
         FullHttpResponse response = new DefaultFullHttpResponse(
             HttpVersion.HTTP_1_1, 
             HttpResponseStatus.OK,
@@ -26,11 +28,30 @@ public class HttpResponseUtil {
         );
         
         response.headers().set(HttpHeaderNames.CONTENT_TYPE, "application/json; charset=UTF-8");
-        response.headers().set(HttpHeaderNames.CONTENT_LENGTH, response.content().readableBytes());
-        
+        setHeaders(headers, response);
         ctx.writeAndFlush(response).addListener(ChannelFutureListener.CLOSE);
     }
-    
+
+    private static void setHeaders(Map<String, String> headers, FullHttpResponse response) {
+        if(headers!=null){
+            for (Map.Entry<String, String> entry : headers.entrySet()) {
+                response.headers().set(entry.getKey(), entry.getValue());
+            }
+        }
+        response.headers().set(HttpHeaderNames.CONTENT_LENGTH, response.content().readableBytes());
+    }
+
+    public static void sendFile(ChannelHandlerContext ctx, byte[] file, String contentType, Map<String,String> headers) {
+        FullHttpResponse response = new DefaultFullHttpResponse(
+            HttpVersion.HTTP_1_1,
+            HttpResponseStatus.OK,
+            Unpooled.wrappedBuffer(file)
+        );
+
+        response.headers().set(HttpHeaderNames.CONTENT_TYPE,contentType);
+        setHeaders(headers, response);
+        ctx.writeAndFlush(response).addListener(ChannelFutureListener.CLOSE);
+    }
     /**
      * 发送404响应
      */

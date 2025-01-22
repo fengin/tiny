@@ -21,7 +21,7 @@ public class DemoApplication {
         try {
             // 设置运行环境，默认加载src/main/application.yaml配置
             // 可以在启动时由环境变量指定app.profile配置文件
-            //System.setProperty("app.profile", "front");
+            //System.setProperty("app.config", "application-dev.yaml");
 
             // 启动Web应用服务
             startHttpServer();

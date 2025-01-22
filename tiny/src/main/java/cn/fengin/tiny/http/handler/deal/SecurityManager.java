@@ -7,6 +7,7 @@ import io.netty.handler.codec.http.HttpRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.net.URI;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
@@ -70,10 +71,17 @@ public class SecurityManager {
 
     private void checkStaticResourceType(String uri) {
         if(null == uri || !uri.contains("."))return;
-        for(String extension : securityConfig.getAllowedExtensions()){
-            if (uri.endsWith(extension)){
-                return;
+        try {
+            URI parsedUri = new URI(uri);
+            String path = parsedUri.getPath(); // 去除查询参数
+            if(!path.contains("."))return;
+            for (String extension : securityConfig.getAllowedExtensions()) {
+                if (path.endsWith(extension)) {
+                    return;
+                }
             }
+        } catch (Exception e) {
+            logger.error("Invalid URI: " + uri, e);
         }
         throw new SecurityException("Request uri is not allowed");
     }

@@ -11,6 +11,7 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.handler.codec.http.*;
 
+import java.net.URI;
 import java.util.Map;
 
 /**
@@ -67,10 +68,16 @@ public class HttpRequestHandler extends SimpleChannelInboundHandler<FullHttpRequ
      * 判断是否是静态资源请求
      */
     private boolean isStaticResource(String uri) {
-        for(String key : mimeTypes.keySet()){
-            if(uri.endsWith(key)){
-                return true;
+        try {
+            URI parsedUri = new URI(uri);
+            String path = parsedUri.getPath(); // 去除查询参数
+            for (String key : mimeTypes.keySet()) {
+                if (path.endsWith(key)) {
+                    return true;
+                }
             }
+        } catch (Exception e) {
+            logger.error("Invalid URI: " + uri, e);
         }
         return false;
     }

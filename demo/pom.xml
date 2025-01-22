@@ -33,7 +33,7 @@
         <dependency>
             <groupId>cn.fengin</groupId>
             <artifactId>tiny</artifactId>
-            <version>0.0.2-snapshot</version>
+            <version>0.0.3-snapshot</version>
         </dependency>
         <dependency>
             <groupId>commons-codec</groupId>

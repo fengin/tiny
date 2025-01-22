@@ -187,7 +187,7 @@ public class TcpServerTest {
     @BeforeAll
     static void setup() throws Exception {
         // 创建TCP服务器配置
-
+        System.setProperty("app.config", "application-template.yaml");
         ServerConfig.TcpServerConfig config = new ServerConfig.TcpServerConfig();
         config.setName("test");
         config.setPort(TEST_PORT);
